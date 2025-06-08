@@ -1,0 +1,14 @@
+services:
+  app:
+    container_name: smart-resume-node
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    tty: true
+    volumes:
+      - ./src:/app
+    environment:
+      - WATCHPACK_POLLING=true
+    command: sh -c "npm run dev"
+    ports:
+      - "13000:3000"
